@@ -24,7 +24,7 @@ document.addEventListener('keydown', function(event) {
         '.': '.',
         '+': '+',
         '-': '-',
-        '*': 'x',
+        'x': 'x',
         '/': '/',
         '%': '%',
         'Enter': '=',
@@ -62,7 +62,16 @@ window.onload = function() {
 function pulsar() {
     texto = this.innerText;
 
-   
+    if (texto === '+' || texto === '-' || texto === 'x' || texto === '/' || texto === '%') {
+        let ultimoCaracter = operandoa.charAt(operandoa.length - 1);
+
+        // Si el último carácter es también un operador, no permitas que se ingrese el operador actual
+        if (isNaN(ultimoCaracter) && ultimoCaracter !== ')') {
+          
+                return;
+            
+        }
+    }
 
     if (!isNaN(texto) || texto === ".") {
 
